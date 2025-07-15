@@ -114,7 +114,7 @@ class _GenerateQrCodePageState extends State<GenerateQrCodePage> {
                   onPressed: () {
                     if (qrText.text.isEmpty) {
                       setState(() {
-                        qrData = "https://www.github.com/kamranhccp";
+                        qrData = "123333";
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(

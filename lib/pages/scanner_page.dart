@@ -27,7 +27,7 @@ class _ScanPageState extends State<ScanPage> {
     return Scaffold(
       key: key,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         title: const Text(
           'QR Code Scanner',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -56,8 +56,8 @@ class _ScanPageState extends State<ScanPage> {
               padding:
                   const EdgeInsets.only(bottom: 30.0, left: 70.0, right: 70.0),
               child: const Image(
-                image: NetworkImage(
-                    'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=https%3A%2F%2Fwww.instagram.com%2Fkamran_hccp&qzone=1&margin=0&size=400x400&ecc=L'),
+                image: AssetImage(
+                    'assets/qr-code.png'),
               ),
             ),
             const SizedBox(
