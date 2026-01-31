@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qrgenscan/main.dart';
+import 'package:share_plus/share_plus.dart';
 
 class GenerateQrCodePage extends StatefulWidget {
   const GenerateQrCodePage({super.key});
@@ -16,7 +17,7 @@ class _GenerateQrCodePageState extends State<GenerateQrCodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.white, // Change icon color to white
         ),
         backgroundColor: AppColors.tileColor,
@@ -45,7 +46,7 @@ class _GenerateQrCodePageState extends State<GenerateQrCodePage> {
                   color: AppColors.iconColor,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 height: 200,
                 width: 200,
@@ -117,7 +118,7 @@ class _GenerateQrCodePageState extends State<GenerateQrCodePage> {
                     if (qrText.text.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text(
+                          content: const Text(
                             "Please enter some text!",
                             style: TextStyle(color: Colors.white),
                           ),
@@ -143,6 +144,19 @@ class _GenerateQrCodePageState extends State<GenerateQrCodePage> {
                   ),
                 ),
               )
+              ,
+              ElevatedButton.icon(
+  onPressed: () {
+    if (qrData.isNotEmpty) {
+      Share.share('Mera QR Code data: $qrData');
+      // Note: Image share karne ke liye screenshot package ki zaroorat hogi, 
+      // filhaal hum text share kar rahe hain.
+    }
+  },
+  icon: const Icon(Icons.share),
+  label: const Text("Share Data"),
+  style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+)
             ],
           ),
         ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:qrgenscan/main.dart';
+import 'package:qrgenscan/pages/history_page.dart';
 import 'package:qrgenscan/pages/qr_genrator.dart';
 import 'package:qrgenscan/pages/scanner.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,6 +23,13 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.history, color: Colors.white),
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HistoryPage())),
+          )
+        ],
       ),
       body: Center(
         child: Container(
@@ -29,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Welcome to QR App',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -65,10 +74,10 @@ class _HomePageState extends State<HomePage> {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton.icon(
-                  icon: Icon(Icons.qr_code_scanner, color: Colors.white),
-                  label: Text(
+                  icon: const Icon(Icons.qr_code_scanner, color: Colors.white),
+                  label: const Text(
                     'Scan QR Code',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -104,8 +113,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   onPressed: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => const GenerateQrCodePage()));
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const GenerateQrCodePage()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.iconColor,
@@ -115,7 +126,22 @@ class _HomePageState extends State<HomePage> {
                     elevation: 2,
                   ),
                 ),
-              )
+              ),
+              const SizedBox(height: 20),
+              TextButton(
+                onPressed: () async {
+                  final Uri url = Uri.parse('YOUR_PRIVACY_POLICY_URL_HERE');
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                  }
+                },
+                child: const Text(
+                  "Privacy Policy",
+                  style: TextStyle(
+                      color: Colors.white70,
+                      decoration: TextDecoration.underline),
+                ),
+              ),
             ],
           ),
         ),
