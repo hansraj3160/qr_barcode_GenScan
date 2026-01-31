@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () async {
-                  final Uri url = Uri.parse('YOUR_PRIVACY_POLICY_URL_HERE');
+                  final Uri url = Uri.parse('https://shopzeo.in/seller/qr_scanner_privacy_policy.html');
                   if (await canLaunchUrl(url)) {
                     await launchUrl(url, mode: LaunchMode.externalApplication);
                   }
