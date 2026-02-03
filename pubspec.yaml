@@ -52,6 +52,7 @@ dependencies:
   url_launcher: ^6.3.2
   sqflite: ^2.4.2
   path: ^1.9.1
+  rename: ^3.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
